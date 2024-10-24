@@ -21,5 +21,6 @@
   },
   "eslint.workingDirectories": [
     "./core"
-  ]
+  ],
+  "editor.formatOnSave": true
 }

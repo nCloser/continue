@@ -41,6 +41,7 @@ import Together from "./Together";
 import Vllm from "./Vllm";
 import WatsonX from "./WatsonX";
 import ContinueProxy from "./stubs/ContinueProxy";
+import Dify from "./Dify";
 
 const LLMs = [
   Anthropic,
@@ -77,6 +78,7 @@ const LLMs = [
   Vllm,
   SambaNova,
   Mock,
+  Dify,
 ];
 
 export async function llmFromDescription(

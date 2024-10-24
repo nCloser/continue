@@ -644,7 +644,8 @@ type ModelProvider =
   | "sambanova"
   | "nvidia"
   | "vllm"
-  | "mock";
+  | "mock"
+  | "dify";
 
 export type ModelName =
   | "AUTODETECT"
@@ -717,7 +718,9 @@ export type ModelName =
   | "starcoder-1b"
   | "starcoder-3b"
   | "starcoder2-3b"
-  | "stable-code-3b";
+  | "stable-code-3b"
+  // Dify
+  | "custom-qwen2.5-72b-awq-2-0";
 
 export interface RequestOptions {
   timeout?: number;
