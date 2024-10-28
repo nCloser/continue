@@ -100,7 +100,7 @@ class Dify extends BaseLLM {
               chunk = chunk.slice(5).trim();
             }
             // 跳过无效消息
-            if (chunk.startsWith("event: ping")) {
+            if (chunk.startsWith("event: ping") || chunk.startsWith("ping")) {
               continue;
             }
             const j = JSON.parse(chunk);
@@ -152,7 +152,7 @@ class Dify extends BaseLLM {
               chunk = chunk.slice(5).trim();
             }
             // 跳过无效消息
-            if (chunk.startsWith("event: ping")) {
+            if (chunk.startsWith("event: ping") || chunk.startsWith("ping")) {
               continue;
             }
             const j = JSON.parse(chunk);

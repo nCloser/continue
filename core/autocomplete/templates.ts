@@ -330,12 +330,35 @@ function hypothenuse(a, b) {
   },
 };
 
+const DifyFillerTemplate: AutocompleteTemplate = {
+  template: (
+    prefix: string,
+    suffix: string,
+    filename: string,
+    reponame: string,
+    language: string,
+    snippets: AutocompleteSnippet[],
+  ) => {
+    // From https://github.com/VictorTaelin/AI-scripts
+    const SYSTEM_MSG = `Complete the missing code or comment in the provided snippet. The context before the missing part is enclosed in <PREFIX></PREFIX>, and the context following it is enclosed in <SUFFIX></SUFFIX>. Output only the completed content (code or content) inside <FILL></FILL>(Not included <FILL></FILL>), without surrounding backticks, ensuring it aligns with the syntax, lexicon, and semantics of the code or comment.`;
+
+    const fullPrompt =
+      SYSTEM_MSG +
+      `\n\n<PREFIX>\n${prefix}</PREFIX><FILL></FILL><SUFFIX>${suffix}</SUFFIX>\n\n`;
+    return fullPrompt;
+  },
+};
+
 export function getTemplateForModel(model: string): AutocompleteTemplate {
   const lowerCaseModel = model.toLowerCase();
 
   // if (lowerCaseModel.includes("starcoder2")) {
   //   return starcoder2FimTemplate;
   // }
+
+  if (lowerCaseModel.includes("custom")) {
+    return DifyFillerTemplate;
+  }
 
   if (lowerCaseModel.includes("qwen") && lowerCaseModel.includes("coder")) {
     return qwenCoderFimTemplate;
